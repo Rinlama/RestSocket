@@ -1,24 +1,25 @@
 const express = require("express");
 
-function socketRouter(io) {
+function SocketRouter(io) {
   const router = express.Router();
 
   router.get("/forecast", (req, res) => {
     const count = req.query.count;
     if (!count) {
-      res.json({
-        message: "data not found",
-      });
+      res
+        .json({
+          message: "count not exits",
+        })
+        .status(401);
     }
+
     io.emit("mod_forecast", count);
     res.json({
-      message: "successful delivered",
+      message: "data delivered",
     });
   });
 
-  return {
-    router,
-  };
+  return router;
 }
 
-module.exports = socketRouter;
+module.exports = SocketRouter;

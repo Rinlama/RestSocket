@@ -4,19 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rest Socket</title>
+    <title>Document</title>
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
-    <h1>
-      Forecast:
-      <span id="data"></span>
-    </h1>
+    <h5>
+      Forecast
+      <span id="count"></span>
+    </h5>
     <script>
       const socket = io();
       console.log(socket);
-      socket.on("mod_forecast", (data) => {
-        document.querySelector("#data").innerHTML = data;
+
+      socket.on("mod_forecast", (count) => {
+        document.querySelector("#count").innerHTML = count;
       });
     </script>
   </body>
